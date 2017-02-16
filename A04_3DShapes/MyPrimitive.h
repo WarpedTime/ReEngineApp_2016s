@@ -90,7 +90,8 @@ public:
 	ARGUMENTS:
 	OUTPUT: ---
 	*/
-	void GeneratePlane(float a_fSize, vector3 a_v3Color);
+			void AddTri(vector3 a_vBottomLeft, vector3 a_vBottomRight, vector3 a_vTopLeft);
+			void GeneratePlane(float a_fSize, vector3 a_v3Color);
 
 private:
 	/* Compiles the object with an specific color and name */
