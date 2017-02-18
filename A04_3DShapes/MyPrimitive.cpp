@@ -129,6 +129,8 @@ void MyPrimitive::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivis
 	float theta = 0;
 	float steps = 2*PI / static_cast<float>(a_nSubdivisions);
 
+
+	//base circle
 	//make disk center
 	point.push_back(vector3(0, 0, 0));
 
@@ -143,6 +145,17 @@ void MyPrimitive::GenerateCone(float a_fRadius, float a_fHeight, int a_nSubdivis
 		AddTri(point[0], point[i], point[1+i]);
 	}
 	AddTri(point[0], point[a_nSubdivisions], point[1]); //close disk
+
+
+	//cone tip and sides
+	point.push_back(vector3(0, a_fHeight, 0));
+
+	//make side tris
+	for (int i = 1; i < a_nSubdivisions; i++) {
+		AddTri(point[a_nSubdivisions+1], point[i], point[1 + i]);
+	}
+	AddTri(point[a_nSubdivisions + 1], point[a_nSubdivisions], point[1]); //close side
+
 
 	//Your code ends here
 	CompileObject(a_v3Color);
