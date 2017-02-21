@@ -369,7 +369,7 @@ void MyPrimitive::GenerateSphere(float a_fRadius, int a_nSubdivisions, vector3 a
 	for (int i = 0; i < numrings; i++) {
 		rings.push_back(std::vector<vector3>());
 		for (int j = 0; j < a_nSubdivisions; j++) {
-			rings[i].push_back(vector3(cos(theta)*(a_fRadius*cos(theta2)), sin(theta)*(a_fRadius*sin(theta2)), height - (a_fRadius / 2.0)));
+			rings[i].push_back(vector3(cos(theta)*height, sin(theta)*height, height - (a_fRadius / 2.0)));
 			theta += steps;
 		} height += heightStep; theta2 += steps;
 	} theta = 0;
