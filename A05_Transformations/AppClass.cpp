@@ -17,7 +17,7 @@ void AppClass::InitVariables(void)
 
 	m_pSun->GenerateSphere(5.936f, 5, REYELLOW);
 	m_pEarth->GenerateTube(0.524f, 0.45f, 0.3f, 10, REBLUE);
-	m_pMoon->GenerateTube(0.524f * 0.27f, 0.45f * 0.27f, 0.3f * 0.27f, 10, REWHITE);
+	m_pMoon->GenerateTube(0.524f * 0.27f, 0.45f * 0.27f, 0.3f * 0.27f, 10, RERED);
 }
 
 void AppClass::Update(void)
@@ -49,11 +49,41 @@ void AppClass::Update(void)
 #pragma endregion
 
 #pragma region YOUR CODE GOES HERE
-	//Calculate the position of the Earth
-	m_m4Earth = glm::rotate(IDENTITY_M4, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f));
 
+	//SUN
+	//move sun with x,y,z (+shift for inverse)
+	m_m4Sun = glm::translate(IDENTITY_M4, sunPos);
+
+	//EARTH
+	//Calculate the position of the Earth
+	m_m4Earth = glm::rotate(m_m4Sun, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f));
+	
+	//tanslate to proper position based on sun and orbit
+	m_m4Earth = glm::translate(m_m4Earth*distanceEarth, vector3(0, 0, 0)); 
+	
+	//save the location without earth rotation for moon
+	matrix4 tempEarth = m_m4Earth;
+	
+	//rotate around self axis
+	m_m4Earth = glm::rotate(m_m4Earth, m_fEarthTimer*360, vector3(0.0f, 0.0f, 1.0f));
+
+	//MOON
 	//Calculate the position of the Moon
-	m_m4Moon = glm::rotate(IDENTITY_M4, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Moon = glm::rotate(tempEarth, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+	
+	//translate
+	m_m4Moon = glm::translate(m_m4Moon*distanceMoon, vector3(0,0,0));
+	
+	//rotate around self axis
+	m_m4Moon = glm::rotate(m_m4Moon, m_fMoonTimer*24, vector3(1.0f, 0.0f, 0.0f));
+
+	//scale earth and moon a bit
+	m_m4Moon = glm::scale(m_m4Moon, vector3(2.0f, 2.0f, 2.0f));
+	//m_m4Earth = glm::scale(m_m4Earth, vector3(2.0f, 2.0f, 2.0f));
+
+
+
+
 #pragma endregion
 
 #pragma region Print info

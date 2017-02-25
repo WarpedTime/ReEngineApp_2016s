@@ -41,6 +41,30 @@ void AppClass::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 		m_pCameraMngr->MoveVertical(fSpeed);
+
+	//sun controls
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)|| sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
+			sunPos -= vector3(0.05, 0, 0);
+			return;
+		}
+		sunPos += vector3(0.05, 0, 0);
+
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
+			sunPos -= vector3(0, 0.05, 0);
+			return;
+		}
+		sunPos += vector3(0, 0.05, 0);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)) {
+			sunPos -= vector3(0, 0, 0.05);
+			return;
+		}
+		sunPos += vector3(0, 0, 0.05);
+	}
 #pragma endregion
 
 #pragma region Other Actions
@@ -67,7 +91,7 @@ void AppClass::ProcessMouse(void)
 			bLast##key = pressed; } //remember the state
 #pragma endregion
 
-	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
+	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle)|| sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Equal))
 		m_bArcBall = true;
 	
 	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
