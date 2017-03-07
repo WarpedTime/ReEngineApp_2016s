@@ -15,6 +15,22 @@ class AppClass : public ReEngAppClass
 	float fDuration = 1.0f; //Time Duration of the stops
 public:
 	typedef ReEngAppClass super;
+	
+	int currentTarget = 0;
+	
+	vector3* targets = new vector3[12];
+	targets[0] = new vector3(-4.0f, -2.0f, 5.0f);
+	targets[1] = new vector3(1.0f, -2.0f, 5.0f);
+	targets[2] = new vector3(-3.0f, -1.0f, 3.0f);
+	targets[3] = new vector3(2.0f, -1.0f, 3.0f);
+	targets[4] = new vector3(-2.0f, 0.0f, 0.0f);
+	targets[5] = new vector3(3.0f, 0.0f, 0.0f);
+	targets[6] = new vector3(-1.0f, 1.0f, -3.0f);
+	targets[7] = new vector3(4.0f, 1.0f, -3.0f);
+	targets[9] = new vector3(0.0f, 2.0f, -5.0f);
+	targets[10] = new vector3(5.0f, 2.0f, -5.0f);
+	targets[11] = new vector3(1.0f, 3.0f, -5.0f);
+	
 	/*
 	USAGE: Constructor
 	ARGUMENTS:

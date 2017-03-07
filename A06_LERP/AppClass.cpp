@@ -35,8 +35,38 @@ void AppClass::Update(void)
 	fRunTime += fTimeSpan; 
 #pragma endregion
 
-#pragma region Your Code goes here
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "WallEye");
+#pragma region YOUR CODE GOES HERE
+
+	//get program run time
+	static DWORD timerSinceBoot = GetTickCount(); //computer boot time (ms)
+	DWORD timerSinceStart = GetTickCount() - timerSinceBoot; //program boot time (ms)
+	float fTimer = timerSinceStart / 1000.0f;
+	
+	//print timer
+	m_pMeshMngr->PrintLine(""); //one empty because window bar hides the first one
+	m_pMeshMngr->Print(std::to_string(fTimer)); //print
+	
+	//make a sphere
+	matrix4 m4SpherePosition = glm::translate(vector3(1,0,0)) * glm::scale(vector3(0.1));
+	m_pMeshMngr->AddSphereToRenderList(m4SpherePosition, RERED, WIRE | SOLID);
+
+	//make model move lerp between two points
+	vector3 v3Start = targets[currentTarget];
+	vector3 v3End = vector3(5, 0, 0);
+	float reachInTime = 5.0f; //time  to reach goal
+	float percentage = MapValue(fTimer, 0.0f , reachInTime, 0.0f, 1.0f); //percentage of distance travelled
+	//stop moving at end
+	if (percentage > 1.0f) { 
+		percentage = 1.0f;
+	}
+	
+	//current model position
+	vector3 v3Current = glm::lerp(v3Start, v3End, percentage);
+	m_pMeshMngr->PrintLine("Move Progress: " + std::to_string(percentage), vector3(0, 255, 0));
+
+	//move model
+	matrix4 m4Creeper = glm::translate(v3Current);
+	m_pMeshMngr->SetModelMatrix(m4Creeper, "WallEye");
 #pragma endregion
 
 #pragma region Does not need changes but feel free to change anything here
