@@ -14,6 +14,19 @@ void AppClass::InitVariables(void)
 	m_pMeshMngr->LoadModel("Sorted\\WallEye.bto", "WallEye");
 
 	fDuration = 1.0f;
+
+	targets = new vector3[11];
+	targets[0] =  vector3(-4.0f, -2.0f, 5.0f);
+	targets[1] = vector3(1.0f, -2.0f, 5.0f);
+	targets[2] = vector3(-3.0f, -1.0f, 3.0f);
+	targets[3] = vector3(2.0f, -1.0f, 3.0f);
+	targets[4] = vector3(-2.0f, 0.0f, 0.0f);
+	targets[5] = vector3(3.0f, 0.0f, 0.0f);
+	targets[6] = vector3(-1.0f, 1.0f, -3.0f);
+	targets[7] = vector3(4.0f, 1.0f, -3.0f);
+	targets[8] = vector3(0.0f, 2.0f, -5.0f);
+	targets[9] = vector3(5.0f, 2.0f, -5.0f);
+	targets[10] = vector3(1.0f, 3.0f, -5.0f);
 }
 
 void AppClass::Update(void)
@@ -36,33 +49,49 @@ void AppClass::Update(void)
 #pragma endregion
 
 #pragma region YOUR CODE GOES HERE
+	//*note: i put in the targets array in the header and initialized them in init
 
 	//get program run time
 	static DWORD timerSinceBoot = GetTickCount(); //computer boot time (ms)
 	DWORD timerSinceStart = GetTickCount() - timerSinceBoot; //program boot time (ms)
 	float fTimer = timerSinceStart / 1000.0f;
-	
+	static float moveTimer = 0;
+	static float lastTime; 
+	float dt = fTimer - lastTime;
+
 	//print timer
 	m_pMeshMngr->PrintLine(""); //one empty because window bar hides the first one
 	m_pMeshMngr->Print(std::to_string(fTimer)); //print
-	
-	//make a sphere
-	matrix4 m4SpherePosition = glm::translate(vector3(1,0,0)) * glm::scale(vector3(0.1));
-	m_pMeshMngr->AddSphereToRenderList(m4SpherePosition, RERED, WIRE | SOLID);
+	//m_pMeshMngr->Print(std::to_string(dt)); //print
+
+	//make spheres
+	for (int i = 0; i < 11; i++) {
+		matrix4 m4SpherePosition = glm::translate(targets[i]) * glm::scale(vector3(0.1));
+		m_pMeshMngr->AddSphereToRenderList(m4SpherePosition, RERED, WIRE | SOLID);
+	}
 
 	//make model move lerp between two points
-	vector3 v3Start = targets[currentTarget];
-	vector3 v3End = vector3(5, 0, 0);
-	float reachInTime = 5.0f; //time  to reach goal
-	float percentage = MapValue(fTimer, 0.0f , reachInTime, 0.0f, 1.0f); //percentage of distance travelled
+	vector3 v3Start = targets[ currentTarget ];
+	vector3 v3End = targets[ (currentTarget+1) % 11 ];
+
+	float reachInTime = 1.0f; //time  to reach goal
+
+	float percentage = MapValue(moveTimer, 0.0f , reachInTime, 0.0f, 1.0f); //percentage of distance travelled
 	//stop moving at end
 	if (percentage > 1.0f) { 
 		percentage = 1.0f;
+		moveTimer = 0;
+		reachInTime = 5.0f;
+		currentTarget++;
+		currentTarget = currentTarget % 11;
 	}
 	
 	//current model position
 	vector3 v3Current = glm::lerp(v3Start, v3End, percentage);
 	m_pMeshMngr->PrintLine("Move Progress: " + std::to_string(percentage), vector3(0, 255, 0));
+
+	lastTime = fTimer;
+	moveTimer += dt;
 
 	//move model
 	matrix4 m4Creeper = glm::translate(v3Current);
