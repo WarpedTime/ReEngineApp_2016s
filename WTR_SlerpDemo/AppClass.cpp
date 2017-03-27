@@ -55,7 +55,6 @@ void AppClass::Update(void)
 	quaternion q3 = glm::mix(q1, q2, fTimer / 2.0f);
 
 
-
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(q3), "Creeper");
 	
 	//Adds all loaded instance to the render list
