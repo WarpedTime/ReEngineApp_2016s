@@ -27,9 +27,6 @@
     <ClCompile Include="MyBoundingSphereClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\w9r_boundingBoxDemo\MyBoundingBoxClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppClass.h">
@@ -39,9 +36,6 @@
       <Filter>Resource Files</Filter>
     </ClInclude>
     <ClInclude Include="MyBoundingSphereClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\w9r_boundingBoxDemo\MyBoundingBoxClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

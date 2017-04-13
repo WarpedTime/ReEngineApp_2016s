@@ -1,7 +1,7 @@
 #pragma once
 #include "RE\ReEng.h"
 
-class MyBoundingSphereClass
+class MyBoundingBoxClass
 {
 private:
 	float m_fRadius = 0.0f; //radius of the sphere
@@ -48,11 +48,11 @@ public:
 	Gets radius of the sphere
 	*/
 	float GetRadius(void);
-
+	
 	/*
 	Constructor, needs a vertex list
 	*/
-	MyBoundingSphereClass(std::vector<vector3> vertexList);
+	MyBoundingBoxClass(std::vector<vector3> vertexList);
 	/*
 	Renders the sphere based on the radius and the center in global space
 	*/
@@ -65,5 +65,5 @@ public:
 	/*
 	Will check the collision with another object
 	*/
-	bool IsColliding(MyBoundingSphereClass* a_other);
+	bool IsColliding(MyBoundingBoxClass* a_other);
 };

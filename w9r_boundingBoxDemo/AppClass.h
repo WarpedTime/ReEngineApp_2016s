@@ -13,15 +13,14 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 
 class AppClass : public ReEngAppClass
 {
-	vector3 m_v3Position;
 	MyBoundingSphereClass* m_pBS0;
-	MyBoundingSphereClass* m_pBS1;
-	MyBoundingSphereClass* m_pBS2;
+
 public:
 	typedef ReEngAppClass super;
+
 	/*
 	USAGE: Constructor
-	ARGUMENTS:
+	ARGUMENTS: 
 	- HINSTANCE hInstance -> Instance of the window
 	- LPWSTR lpCmdLine -> Command line
 	- int nCmdShow -> Number or arguments

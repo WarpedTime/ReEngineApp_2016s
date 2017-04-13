@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_Basics", "01_Basics\01_Basics.vcxproj", "{425ED9DA-852E-4F61-BE06-487F68A6187E}"
 EndProject
@@ -63,9 +63,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "E12_Sierpinski", "E12_Sierp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A07_SLERP", "A07_SLERP\A07_SLERP.vcxproj", "{EF817BA9-17FE-44E0-B405-C5962E93B613}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w9r_boundingDemo", "w9r_boundingDemo\w9r_boundingDemo.vcxproj", "{04CE3988-5629-4690-AB28-D1A89B7B8392}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w9r_boundingBoxDemo", "w9r_boundingDemo\w9r_boundingDemo.vcxproj", "{04CE3988-5629-4690-AB28-D1A89B7B8392}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "A08_CameraClass", "A08_CameraClass\A08_CameraClass.vcxproj", "{30CEF779-BE2B-4DB9-B658-3B5E8E6C9F3C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "W9R_BoundingSphereDEMO", "W9R_BoundingSphereDEMO\W9R_BoundingSphereDEMO.vcxproj", "{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "w9r_boundingDemo", "w9r_boundingBoxDemo\w9r_boundingBoxDemo.vcxproj", "{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,6 +177,14 @@ Global
 		{30CEF779-BE2B-4DB9-B658-3B5E8E6C9F3C}.Debug|x86.Build.0 = Debug|Win32
 		{30CEF779-BE2B-4DB9-B658-3B5E8E6C9F3C}.Release|x86.ActiveCfg = Release|Win32
 		{30CEF779-BE2B-4DB9-B658-3B5E8E6C9F3C}.Release|x86.Build.0 = Release|Win32
+		{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4}.Debug|x86.ActiveCfg = Debug|Win32
+		{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4}.Debug|x86.Build.0 = Debug|Win32
+		{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4}.Release|x86.ActiveCfg = Release|Win32
+		{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4}.Release|x86.Build.0 = Release|Win32
+		{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1}.Debug|x86.ActiveCfg = Debug|Win32
+		{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1}.Debug|x86.Build.0 = Debug|Win32
+		{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1}.Release|x86.ActiveCfg = Release|Win32
+		{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,5 +215,7 @@ Global
 		{EF817BA9-17FE-44E0-B405-C5962E93B613} = {124C8EDD-52BA-4EAA-A1F4-6D4302AB5DEC}
 		{04CE3988-5629-4690-AB28-D1A89B7B8392} = {77A006BE-0096-461D-AC30-32ECAA2B3FDA}
 		{30CEF779-BE2B-4DB9-B658-3B5E8E6C9F3C} = {124C8EDD-52BA-4EAA-A1F4-6D4302AB5DEC}
+		{625922B3-FF5F-49AF-84A3-8E4BAD5B8DC4} = {77A006BE-0096-461D-AC30-32ECAA2B3FDA}
+		{3ACC1EC5-74E5-4A97-A034-AF6E71C39EA1} = {77A006BE-0096-461D-AC30-32ECAA2B3FDA}
 	EndGlobalSection
 EndGlobal
