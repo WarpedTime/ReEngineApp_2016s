@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{05BD95CA-C5F7-45E3-A252-EF522EAAA809}</ProjectGuid>
+    <ProjectGuid>{3E7E3650-B9CC-4F18-B0DA-ED06BAC139B7}</ProjectGuid>
     <RootNamespace>08_RenderTarget</RootNamespace>
     <ProjectName>08_RenderTarget</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
